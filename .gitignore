@@ -27,3 +27,5 @@ openclaw/openclaw-home/agents/*/sessions/
 .idea/
 .DS_Store
 Thumbs.db
+
+architecture-diagram.png
