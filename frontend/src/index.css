@@ -1,0 +1,176 @@
+/* src/index.css - Material Design 3 基礎 tokens (light/dark 支援) */
+/* 參考 m3.material.io 的 color roles + elevation + typography */
+
+:root {
+  /* 顏色 tokens - 基於 Material You 常見 purple 主色調，可後續換 seed color */
+  --md-sys-color-primary: #6750a4;
+  --md-sys-color-primary-container: #eaddff;
+  --md-sys-color-on-primary: #ffffff;
+  --md-sys-color-on-primary-container: #21005d;
+  --md-sys-color-secondary: #625b71;
+  --md-sys-color-secondary-container: #e8def8;
+  --md-sys-color-on-secondary: #ffffff;
+  --md-sys-color-on-secondary-container: #1d192b;
+  --md-sys-color-tertiary: #7d5260;
+  --md-sys-color-tertiary-container: #ffd8e4;
+  --md-sys-color-on-tertiary: #ffffff;
+  --md-sys-color-on-tertiary-container: #31111d;
+  --md-sys-color-error: #b3261e;
+  --md-sys-color-error-container: #f9dedc;
+  --md-sys-color-on-error: #ffffff;
+  --md-sys-color-on-error-container: #410e0b;
+  --md-sys-color-background: #fffbfe;
+  --md-sys-color-on-background: #1c1b1f;
+  --md-sys-color-surface: #fffbfe;
+  --md-sys-color-on-surface: #1c1b1f;
+  --md-sys-color-surface-variant: #e7e0ec;
+  --md-sys-color-on-surface-variant: #49454f;
+  --md-sys-color-outline: #79747e;
+  --md-sys-color-inverse-on-surface: #f4eff4;
+  --md-sys-color-inverse-surface: #313033;
+  --md-sys-color-shadow: #000000;
+  --md-sys-color-surface-tint: #6750a4;
+
+  /* Elevation (shadows) - MD3 推薦 0-5 level */
+  --md-sys-elevation-level0: 0 0 0 0 rgba(0,0,0,0);
+  --md-sys-elevation-level1: 0 1px 3px 0 rgba(0,0,0,0.12), 0 1px 2px 0 rgba(0,0,0,0.24);
+  --md-sys-elevation-level2: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  --md-sys-elevation-level3: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+
+  /* Typography - MD3 scale (簡化) */
+  --md-sys-typescale-body-large-font: system-ui, sans-serif;
+  --md-sys-typescale-body-large-size: 1rem;
+  --md-sys-typescale-body-large-line-height: 1.5;
+  --md-sys-typescale-body-large-weight: 400;
+  --md-sys-typescale-title-large-size: 1.375rem;
+  --md-sys-typescale-title-large-weight: 500;
+  --md-sys-typescale-label-large-size: 0.875rem;
+  --md-sys-typescale-label-large-weight: 500;
+
+  /* Shape - corner radius */
+  --md-sys-shape-corner-medium: 12px;
+  --md-sys-shape-corner-large: 16px;
+  --md-sys-shape-corner-extra-large: 28px;
+
+  /* 其他 */
+  --md-ref-palette-neutral-variant90: #e7e0ec;
+  --md-ref-palette-neutral-variant30: #49454f;
+
+  font-family: system-ui, -apple-system, BlinkMacOSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--md-sys-color-on-background);
+  background-color: var(--md-sys-color-background);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --md-sys-color-primary: #d0bcff;
+    --md-sys-color-primary-container: #4f378b;
+    --md-sys-color-on-primary: #381e72;
+    --md-sys-color-on-primary-container: #eaddff;
+    --md-sys-color-secondary: #ccc2dc;
+    --md-sys-color-secondary-container: #4a4458;
+    --md-sys-color-on-secondary: #332d41;
+    --md-sys-color-on-secondary-container: #e8def8;
+    --md-sys-color-background: #1c1b1f;
+    --md-sys-color-on-background: #e6e1e5;
+    --md-sys-color-surface: #1c1b1f;
+    --md-sys-color-on-surface: #e6e1e5;
+    --md-sys-color-surface-variant: #49454f;
+    --md-sys-color-on-surface-variant: #cac4d0;
+    --md-sys-color-outline: #938f99;
+  }
+}
+
+/* Reset & 全局樣式 */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100svh;
+}
+
+#root {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 常用 class (後續 component 會用) */
+.md-filled-button {
+  background: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-primary);
+  border: none;
+  border-radius: var(--md-sys-shape-corner-medium);
+  padding: 0.75rem 1.5rem;
+  font-weight: var(--md-sys-typescale-label-large-weight);
+  font-size: var(--md-sys-typescale-label-large-size);
+  cursor: pointer;
+  box-shadow: var(--md-sys-elevation-level1);
+  transition: all 0.2s;
+}
+
+.md-filled-button:hover {
+  box-shadow: var(--md-sys-elevation-level2);
+}
+
+.md-filled-button:disabled {
+  background: var(--md-ref-palette-neutral-variant90);
+  color: var(--md-ref-palette-neutral-variant30);
+  cursor: not-allowed;
+}
+
+.md-outlined-text-field {
+  position: relative;
+  width: 100%;
+}
+
+.md-outlined-text-field textarea,
+.md-outlined-text-field input {
+  width: 100%;
+  padding: 1rem 1rem 0.5rem;
+  border: 1px solid var(--md-sys-color-outline);
+  border-radius: var(--md-sys-shape-corner-medium);
+  background: var(--md-sys-color-surface);
+  color: var(--md-sys-color-on-surface);
+  font-family: inherit;
+  font-size: 1rem;
+  resize: vertical;
+  min-height: 120px;
+}
+
+.md-outlined-text-field textarea:focus,
+.md-outlined-text-field input:focus {
+  outline: none;
+  border-color: var(--md-sys-color-primary);
+  box-shadow: 0 0 0 2px var(--md-sys-color-primary-container);
+}
+
+.md-label {
+  position: absolute;
+  top: 0.75rem;
+  left: 1rem;
+  font-size: 0.75rem;
+  color: var(--md-sys-color-on-surface-variant);
+  pointer-events: none;
+  transition: all 0.2s;
+}
+
+.md-outlined-text-field textarea:focus + .md-label,
+.md-outlined-text-field textarea:not(:placeholder-shown) + .md-label {
+  top: -0.5rem;
+  left: 0.75rem;
+  font-size: 0.6875rem;
+  background: var(--md-sys-color-background);
+  padding: 0 0.25rem;
+  color: var(--md-sys-color-primary);
+}

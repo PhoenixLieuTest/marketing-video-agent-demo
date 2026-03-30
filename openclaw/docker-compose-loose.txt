@@ -1,0 +1,24 @@
+services:
+  openclaw:
+    image: ghcr.io/openclaw/openclaw:latest
+    container_name: openclaw-hardened
+    ports:
+      - "127.0.0.1:18789:18789"  
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - ./workspace:/workspace
+      - ./state:/home/openclaw/state
+      - ./openclaw-home:/home/node/.openclaw
+    mem_limit: 2g
+    cpus: 1.5
+    command:
+      - node
+      - dist/index.js
+      - gateway
+      - --bind
+      - lan                  
+      - --allow-unconfigured
+      - --verbose

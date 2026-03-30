@@ -1,0 +1,29 @@
+.env
+*.local
+openclaw/.env
+
+# --- Python 
+backend/venv/
+backend/.env
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# --- Node.js / Frontend 
+frontend/node_modules/
+frontend/dist/
+frontend/.eslintcache
+.npm
+.eslintcache
+
+# --- OpenClaw / Docker 
+openclaw/openclaw-home/state/
+openclaw/openclaw-home/workspace/
+openclaw/openclaw-home/agents/*/sessions/
+*.log
+
+# --- 系統與 IDE 檔案 ---
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
